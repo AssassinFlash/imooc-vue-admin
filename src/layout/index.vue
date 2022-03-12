@@ -1,18 +1,18 @@
 <template>
-  <div
-    class='app-wrapper'
-    :class="[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']"
-  >
+  <div class="app-wrapper">
     <!-- 左侧 Menu -->
     <Sidebar
-      class='sidebar-container'
-      :style='{ backgroundColor: variables.menuBg }'
+      class="sidebar-container"
+      :style="{ backgroundColor: variables.menuBg }"
     />
-    <div class='main-container'>
-      <div class='fixed-header'>
+
+    <!-- 右侧内容 -->
+    <div class="main-container">
+      <div class="fixed-header">
         <!-- 顶部 navbar -->
         <Navbar />
       </div>
+
       <!-- 内容区 -->
       <AppMain />
     </div>
@@ -26,7 +26,7 @@ import AppMain from './components/AppMain'
 import variables from '@/styles/variables.scss'
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import '~@/styles/variables.scss';
 @import '~@/styles/mixin.scss';
 
@@ -47,7 +47,7 @@ import variables from '@/styles/variables.scss'
 
   &.hideSidebar {
     .fixed-header {
-      width: calc(100% - #{$hideSideBarWidth})
+      width: calc(100% - #{$hideSideBarWidth});
     }
   }
 }

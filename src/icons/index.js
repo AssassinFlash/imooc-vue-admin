@@ -10,6 +10,7 @@ import SvgIcon from '@/components/SvgIcon'
 
 const svgRequire = require.context('./svg', false, /\.svg$/)
 svgRequire.keys().forEach((svgIcon) => svgRequire(svgIcon))
+
 // 传入 app 实例，进行全局注册 SvgIcon 组件
 export default function installIcons(app) {
   app.component('SvgIcon', SvgIcon)

@@ -1,8 +1,7 @@
 // 处理用户相关的内容
-import { login, getUserInfo } from '@/api/sys'
-import { setItem, getItem, removeItem } from '@/utils/storage'
-import { setTimeStamp } from '@/utils/auth'
-import { TOKEN, TIME_STAMP } from '@/constant'
+import { login } from '@/api/sys'
+import { setItem, getItem } from '@/utils/storage'
+import { TOKEN } from '@/constant'
 import { ElMessage } from 'element-plus'
 import router from '@/router'
 import md5 from 'md5'
@@ -18,10 +17,6 @@ export default {
       state.token = token
       // 保存到本地缓存
       setItem(TOKEN, token)
-      setTimeStamp()
-    },
-    setUserInfo(state, userInfo) {
-      state.userInfo = userInfo
     }
   },
   actions: {
@@ -44,20 +39,6 @@ export default {
             reject(err)
           })
       })
-    },
-    // 获取用户信息
-    async getUserInfo({ commit }) {
-      const res = await getUserInfo()
-      commit('setUserInfo', res)
-    },
-    // 退出登录
-    logout({ commit }) {
-      commit('setToken', '')
-      commit('setUserInfo', {})
-      removeItem(TOKEN)
-      removeItem(TIME_STAMP)
-      router.push('/login')
-      ElMessage.warning('退出登录')
     }
   }
 }

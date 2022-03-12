@@ -10,6 +10,13 @@ function resolve(dir) {
 }
 
 module.exports = {
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': resolve('src')
+      }
+    }
+  },
   // webpack 的 devServer 提供了代理的功能
   // 可以把所有请求到当前服务的请求，转发到另外一个服务器上
   devServer: {
